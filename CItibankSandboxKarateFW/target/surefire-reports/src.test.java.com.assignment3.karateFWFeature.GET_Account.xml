@@ -1,0 +1,21 @@
+<testsuite failures="0" name="src/test/java/com/assignment3/karateFWFeature/GET_Account.feature" skipped="0" tests="1" time="6.158236">
+  <testcase classname="src.test.java.com.assignment3.karateFWFeature.GET_Account" name="Initiate the Account API with valid fields and verify the Expected Result" time="6.158236">
+    <system-out>* call read('classpath:reusable.feature') ................................. passed
+* def testData = read('classpath:com/assignment3/karateFW/testdata/testData.json') . passed
+* call read('classpath:com/assignment3/karateFWFeature/POST-Client_Credentials.feature@access_token') . passed
+* call read('classpath:com/assignment3/karateFWFeature/POST_Password.feature@ResourceOwner') . passed
+Given url testData.baseURI + testData.Account_Resource .................... passed
+And header Authorization = authorization .................................. passed
+And header Accept = testData.accept ....................................... passed
+And header uuid = randomString(20) ........................................ passed
+And header client_id = testData.client_Id ................................. passed
+When method get ........................................................... passed
+Then status 200 ........................................................... passed
+* print response .......................................................... passed
+* match response.accountGroupSummary == '#present' ........................ passed
+* match response.accountGroupSummary[0].accountGroup == 'SAVINGS_AND_INVESTMENTS' . passed
+* match response.accountGroupSummary[1].accountGroup == 'CHECKING' ........ passed
+* match response.accountGroupSummary[2].accountGroup == 'CREDIT_CARD' ..... passed
+* print '********* Account Summary Details Generated *********' ........... passed</system-out>
+  </testcase>
+</testsuite>

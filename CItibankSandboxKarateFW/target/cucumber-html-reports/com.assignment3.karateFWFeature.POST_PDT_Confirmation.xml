@@ -1,0 +1,80 @@
+<testsuite failures="1" name="com/assignment3/karateFWFeature/POST_PDT_Confirmation.feature" skipped="0" tests="2" time="15.049715">
+  <testcase classname="com.assignment3.karateFWFeature.POST_PDT_Confirmation" name="Initiate the PDT-Confirmation API with valid fields and verify the Expected Result" time="7.853716">
+    <failure message="POST_PDT_Confirmation.feature:22 - status code was: 400, expected: 200, response time: 902, url: https://sandbox.apihub.citi.com/gcb/api/v1/moneyMovement/personalDomesticTransfers, response: {&quot;code&quot;:&quot;invalidRequest&quot;,&quot;details&quot;:&quot;Missing or invalid Parameters&quot;,&quot;type&quot;:&quot;invalid&quot;,&quot;moreInfo&quot;:{&quot;fieldLevelErrors&quot;:[{&quot;fieldName&quot;:&quot;/JSON/controlFlowId&quot;,&quot;errorMessage&quot;:&quot;Required Field is not coming/Invalid Field  format is coming&quot;,&quot;reasonCode&quot;:&quot;Required/Invalid Format&quot;}]}}">* call read('classpath:reusable.feature') ................................. passed
+* def testData = read('classpath:com/assignment3/karateFW/testdata/testData.json') . passed
+* def PDT_Confirmation_Payload = read('classpath:com/assignment3/karateFW/testdata/PDT_Confirmation_payload.json') . passed
+* call read('classpath:com/assignment3/karateFWFeature/POST_PDT-PreProcess.feature@PDT_PreProcess') . passed
+Given url testData.baseURI + testData.PDT_Confirmation_Resource ........... passed
+And header Authorization = authorization .................................. passed
+And header uuid = randomString(20) ........................................ passed
+And header Accept = testData.Content_Type_PDT_Confirmation ................ passed
+And header client_id = testData.client_Id ................................. passed
+And header Content-Type = testData.Content_Type_PDT_Confirmation .......... passed
+* set PDT_Confirmation_Payload.controlFlowID = controlFlowId .............. passed
+* print 'POST_PDT-Confirmation Payload Request : ' + PDT_Confirmation_Payload . passed
+And request PDT_Confirmation_Payload ...................................... passed
+When method post .......................................................... passed
+Then status 200 ........................................................... failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: POST_PDT_Confirmation.feature:22 - status code was: 400, expected: 200, response time: 902, url: https://sandbox.apihub.citi.com/gcb/api/v1/moneyMovement/personalDomesticTransfers, response: {"code":"invalidRequest","details":"Missing or invalid Parameters","type":"invalid","moreInfo":{"fieldLevelErrors":[{"fieldName":"/JSON/controlFlowId","errorMessage":"Required Field is not coming/Invalid Field  format is coming","reasonCode":"Required/Invalid Format"}]}}&#13;
+	at ✽.Then status 200 (POST_PDT_Confirmation.feature:22)&#13;
+
+* print 'Response Time : ' + responseTime ................................. skipped
+And assert responseTime &lt; 10000 ........................................... skipped
+And match responseType == 'json' .......................................... skipped
+* print response .......................................................... skipped
+* print '********* PDT-Confirmation Done *********' ....................... skipped</failure>
+  </testcase>
+  <testcase classname="com.assignment3.karateFWFeature.POST_PDT_Confirmation" name="To verify the PDT-Confirmation API with invalid controlFlowId" time="7.195998">
+    <system-out>* call read('classpath:reusable.feature') ................................. passed
+* def testData = read('classpath:com/assignment3/karateFW/testdata/testData.json') . passed
+* def PDT_Confirmation_Payload = read('classpath:com/assignment3/karateFW/testdata/PDT_Confirmation_payload.json') . passed
+* call read('classpath:com/assignment3/karateFWFeature/POST_PDT-PreProcess.feature@PDT_PreProcess') . passed
+Given url testData.baseURI + testData.PDT_Confirmation_Resource ........... passed
+And header Authorization = authorization .................................. passed
+And header uuid = randomString(20) ........................................ passed
+And header Accept = testData.Content_Type_PDT_Confirmation ................ passed
+And header client_id = testData.client_Id ................................. passed
+And header Content-Type = testData.Content_Type_PDT_Confirmation .......... passed
+* set PDT_Confirmation_Payload.controlFlowID = controlFlowId .............. passed
+* print 'POST_PDT-Confirmation Payload Request : ' + PDT_Confirmation_Payload . passed
+And request PDT_Confirmation_Payload ...................................... passed
+When method post .......................................................... passed
+Then status 200 ........................................................... failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: POST_PDT_Confirmation.feature:22 - status code was: 400, expected: 200, response time: 902, url: https://sandbox.apihub.citi.com/gcb/api/v1/moneyMovement/personalDomesticTransfers, response: {"code":"invalidRequest","details":"Missing or invalid Parameters","type":"invalid","moreInfo":{"fieldLevelErrors":[{"fieldName":"/JSON/controlFlowId","errorMessage":"Required Field is not coming/Invalid Field  format is coming","reasonCode":"Required/Invalid Format"}]}}&#13;
+	at ✽.Then status 200 (POST_PDT_Confirmation.feature:22)&#13;
+
+* print 'Response Time : ' + responseTime ................................. skipped
+And assert responseTime &lt; 10000 ........................................... skipped
+And match responseType == 'json' .......................................... skipped
+* print response .......................................................... skipped
+* print '********* PDT-Confirmation Done *********' ....................... skipped
+* call read('classpath:reusable.feature') ................................. passed
+* def testData = read('classpath:com/assignment3/karateFW/testdata/testData.json') . passed
+* def PDT_Confirmation_Payload = read('classpath:com/assignment3/karateFW/testdata/PDT_Confirmation_payload.json') . passed
+* call read('classpath:com/assignment3/karateFWFeature/POST_PDT-PreProcess.feature@PDT_PreProcess') . passed
+Given url testData.baseURI + testData.PDT_Confirmation_Resource ........... passed
+And header Authorization = authorization .................................. passed
+And header Accept = testData.accept ....................................... passed
+And header uuid = randomString(20) ........................................ passed
+And header client_id = testData.client_Id ................................. passed
+And header Content-Type = testData.Content_Type_PDT_Confirmation .......... passed
+* set PDT_Confirmation_Payload.controlFlowID = testData.InvalidcontrolFlowID . passed
+* print 'POST_PDT-Confirmation Payload Request : ' + PDT_Confirmation_Payload . passed
+And request PDT_Confirmation_Payload ...................................... passed
+When method post .......................................................... passed
+Then status 400 ........................................................... passed
+* print 'Response Time : ' + responseTime ................................. passed
+And assert responseTime &lt; 10000 ........................................... passed
+And match responseType == 'json' .......................................... passed
+* print response .......................................................... passed
+* match response.type == 'invalid' ........................................ passed
+* match response.code == 'invalidRequest' ................................. passed
+* match response.details == 'Missing or invalid Parameters' ............... passed
+* print '********* PDT-Confirmation with invalid_controlflowid  *********' . passed
+* print '********* PDT-Confirmation Done *********' ....................... passed</system-out>
+  </testcase>
+</testsuite>
